@@ -11,24 +11,24 @@ public class ThreadAdding {
 
               if(addingNum > MaxAdding){
 
-                   throw new InterruptedException("RachMax");
+                   throw new InterruptedException("ReachMax");
                }
                addingNum++;
                System.out.println("adding "+addingNum+"  "+Thread.currentThread());
-               wait();
-               notify();
+               //wait();
+               //notify();
 
         }
 
         public  boolean isReach() throws InterruptedException{
             if(addingNum >= MaxAdding){
-               // throw new InterruptedException("Reach");
+                throw new InterruptedException("Reach");
             }
             return addingNum >= MaxAdding;
         }
 
         public void showNumber(){
-            System.out.println("valve is:"+addingNum+" "+Thread.currentThread());
+            System.out.println("value is:"+addingNum+" "+Thread.currentThread());
         }
 
     }
@@ -46,7 +46,7 @@ public class ThreadAdding {
                 try{
                     while (!ap.isReach()) {
                         ap.adding();
-                        //Thread.sleep(1);
+                        Thread.sleep(1);
                     }
                 } catch (InterruptedException e){
                     ap.showNumber();
@@ -59,8 +59,8 @@ public class ThreadAdding {
 
          Thread t1 = new Thread(task);
          Thread t2 = new Thread(task);
-          t1.start();
-          t2.start();
+         t1.start();
+         t2.start();
 
 
     }
