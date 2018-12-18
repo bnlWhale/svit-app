@@ -29,7 +29,6 @@ public class JoinExample {
         /*try{ // the Main will wait for t1's finish
             t1.join();
         }catch (InterruptedException e){
-
         }*/
         try{
             for(int i=0;i<MaxStep;i++){
