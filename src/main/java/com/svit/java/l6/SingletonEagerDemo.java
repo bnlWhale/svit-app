@@ -16,7 +16,11 @@ public class SingletonEagerDemo {
 	  
 	  private SingletonEagerDemo() { 
 	    // private constructor 
-	  } 
+	  }
+
+	  public void showInfo(){
+	  	 System.out.println("SingletonEagerDemo print");
+	  }
 	  
 	  public static SingletonEagerDemo getSingletonObject(){
 		  return instance;
@@ -32,6 +36,20 @@ public class SingletonEagerDemo {
 
         System.out.println("Singleton object obtained 3rd time!"
                 + getSingletonObject());
+
+        //use reflection to clone singleton's object
+		SingletonEagerDemo sd = SingletonEagerDemo.getSingletonObject();
+		System.out.println(sd.getClass());
+		Class cls = sd.getClass();
+		try{
+			SingletonEagerDemo obj = (SingletonEagerDemo)cls.newInstance();
+			System.out.println("show reflction object:"+obj);
+			obj.showInfo();
+		}catch(InstantiationException e){
+
+		}catch(IllegalAccessException e){
+
+		}
 
     }
 }
